@@ -28,7 +28,7 @@ public class ReadXML {
 			Element transportMode1 = (Element) transportMode.item(n);
 			System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = new String(transportMode1.getFirstChild().getNodeValue());
-			String text = new String("BUS");
+			String text = new String("METRO");
 			if (transportText.equals(text)) {
 				timeleft = (Element) DisplayTime.item(n);
 				isMetro = true;
@@ -59,7 +59,7 @@ public class ReadXML {
 			Element transportMode1 = (Element) transportMode.item(n);
 			System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = new String(transportMode1.getFirstChild().getNodeValue());
-			String text = new String("BUS");
+			String text = new String("METRO");
 			if (transportText.equals(text)) {
 				destination1 = (Element) Destination.item(n);
 				isMetro = true;

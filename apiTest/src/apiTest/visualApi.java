@@ -17,9 +17,10 @@ import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class visualApi extends JFrame implements ActionListener {
-	JButton btnGetrefresh = new JButton("Get/Refresh");
+	JButton btnGetrefresh = new JButton("Get departures");
 	JLabel lblDepartures = new JLabel("Departures");
 	JLabel lblTimeLeft = new JLabel("");
 	JLabel Departure1 = new JLabel("");
@@ -91,6 +92,13 @@ public class visualApi extends JFrame implements ActionListener {
 		contentPane.add(TimeLeft2);
 		
 		btnGetrefresh.addActionListener(this);
+		
+		HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
+		boxt.put(1, TimeLeft1);
+		boxt.put(2, TimeLeft2);
+		HashMap <Integer, JLabel> boxd= new HashMap <Integer, JLabel>();
+		boxd.put(1, Departure1);
+		boxd.put(2, Departure2);
 		
 	}
 
