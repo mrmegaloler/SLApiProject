@@ -25,12 +25,12 @@ public class ReadXML {
 		NodeList transportMode = doc.getElementsByTagName("TransportMode");
 		Element timeleft = null;
 		do {
-			Element transportMode1 = (Element) transportMode.item(n);
+			Element transportMode1 = (Element) transportMode.item(n + visualApi.pos);
 			System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = new String(transportMode1.getFirstChild().getNodeValue());
 			String text = new String("METRO");
 			if (transportText.equals(text)) {
-				timeleft = (Element) DisplayTime.item(n);
+				timeleft = (Element) DisplayTime.item(n + visualApi.pos);
 				isMetro = true;
 			} else if (transportMode1.getFirstChild().getNodeValue() != text) {
 				n++;
@@ -56,12 +56,12 @@ public class ReadXML {
 		NodeList transportMode = doc.getElementsByTagName("TransportMode");
 		
 		do {
-			Element transportMode1 = (Element) transportMode.item(n);
+			Element transportMode1 = (Element) transportMode.item(n + visualApi.pos);
 			System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = new String(transportMode1.getFirstChild().getNodeValue());
 			String text = new String("METRO");
 			if (transportText.equals(text)) {
-				destination1 = (Element) Destination.item(n);
+				destination1 = (Element) Destination.item(n + visualApi.pos);
 				isMetro = true;
 			} else if (transportMode1.getFirstChild().getNodeValue() != text) {
 				n++;

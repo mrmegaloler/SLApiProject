@@ -27,6 +27,11 @@ public class visualApi extends JFrame implements ActionListener {
 	JLabel Departure2 = new JLabel("");
 	JLabel TimeLeft1 = new JLabel("");
 	JLabel TimeLeft2 = new JLabel("");
+	public static int pos = 0;
+	HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
+	
+	HashMap <Integer, JLabel> boxd= new HashMap <Integer, JLabel>();
+
 	
 	private JPanel contentPane;
 	private JTextField txtStation;
@@ -93,23 +98,29 @@ public class visualApi extends JFrame implements ActionListener {
 		
 		btnGetrefresh.addActionListener(this);
 		
-		HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
-		boxt.put(1, TimeLeft1);
-		boxt.put(2, TimeLeft2);
-		HashMap <Integer, JLabel> boxd= new HashMap <Integer, JLabel>();
-		boxd.put(1, Departure1);
-		boxd.put(2, Departure2);
+		
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		boxt.put(1, TimeLeft1);
+		boxt.put(2, TimeLeft2);
+		boxd.put(1, Departure1);
+		boxd.put(2, Departure2);
 		
 		String station = txtStation.getText();
-		
+		int n = 1;
+		int m = 1;
 		try {
-			TimeLeft1.setText(ReadXML.timeleft(station));
-			Departure1.setText((ReadXML.departure(station)));
+			while(n<=2){
+			boxt.get(n).setText(ReadXML.timeleft(station));
+			n++;
+			boxd.get(m).setText((ReadXML.departure(station)));
+			m++;
+			pos = pos + 3;
+			}	
+		
 		
 		} catch (ParserConfigurationException e1) {
 			// TODO Auto-generated catch block
