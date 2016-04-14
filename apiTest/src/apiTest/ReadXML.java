@@ -23,11 +23,15 @@ public class ReadXML {
 		Document doc = builder.parse(URLC);
 		NodeList DisplayTime = doc.getElementsByTagName("DisplayTime");
 		NodeList transportMode = doc.getElementsByTagName("TransportMode");
+		NodeList Direction = doc.getElementsByTagName("JourneyDirection");
+		NodeList Line = doc.getElementsByTagName("GroupOfLineId");
 		Element timeleft = null;
 		do {
 			Element transportMode1 = (Element) transportMode.item(n + visualApi.pos);
+			Element Direction1 = (Element) Direction.item(n + visualApi.pos);
 			System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = new String(transportMode1.getFirstChild().getNodeValue());
+			String directionText = new String(Direction1.getFirstChild().getNodeValue());
 			String text = new String("METRO");
 			if (transportText.equals(text)) {
 				timeleft = (Element) DisplayTime.item(n + visualApi.pos);
@@ -37,7 +41,8 @@ public class ReadXML {
 				isMetro = false;
 			}
 		} while (isMetro == false);
-
+		
+		n=0;
 		return timeleft.getFirstChild().getNodeValue();
 
 	}
@@ -68,6 +73,8 @@ public class ReadXML {
 				isMetro = false;
 			}
 		} while (isMetro == false);
+		
+		n=0;
 
 		return destination1.getFirstChild().getNodeValue();
 

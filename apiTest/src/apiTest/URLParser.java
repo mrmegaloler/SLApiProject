@@ -16,7 +16,7 @@ public class URLParser {
 	static String station = null;
 	public static String GetURL(String Destination) throws SAXException, IOException, ParserConfigurationException{
 		if(initialscan == 0){
-		String URL = new String("http://api.sl.se/api2/typeahead.xml?key=bf4cf6c97ba440789f6f8827577435e2&stationsonly=True&maxresults=1&searchstring=");
+		String URL = new String("http://api.sl.se/api2/typeahead.xml?key=bf4cf6c97ba440789f6f8827577435e2&stationsonly=True&maxresults=3&searchstring=");
 		URL = URL + Destination;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -26,6 +26,14 @@ public class URLParser {
 		Element StationIDE = (Element)StationID.item(0);
 		
 		String ID = StationIDE.getFirstChild().getNodeValue();
+		
+		NodeList StationName = doc.getElementsByTagName("Name");
+		Element StationNameE = (Element)StationName.item(0);
+		String StationNameT = StationNameE.getFirstChild().getNodeValue();
+		visualApi.GetStation.setText(StationNameT);
+		
+		
+		
 		station = ID;
 		System.out.print(ID);
 		initialscan++;

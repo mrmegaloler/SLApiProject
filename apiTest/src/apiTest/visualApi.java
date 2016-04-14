@@ -21,12 +21,12 @@ import java.util.HashMap;
 
 public class visualApi extends JFrame implements ActionListener {
 	JButton btnGetrefresh = new JButton("Get departures");
-	JLabel lblDepartures = new JLabel("Departures");
 	JLabel lblTimeLeft = new JLabel("");
 	JLabel Departure1 = new JLabel("");
 	JLabel Departure2 = new JLabel("");
 	JLabel TimeLeft1 = new JLabel("");
 	JLabel TimeLeft2 = new JLabel("");
+	public static JLabel GetStation = new JLabel("");
 	public static int pos = 0;
 	HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
 	
@@ -74,27 +74,31 @@ public class visualApi extends JFrame implements ActionListener {
 		contentPane.add(txtStation);
 		txtStation.setColumns(10);
 		
-		
-		lblDepartures.setBounds(10, 81, 159, 14);
-		contentPane.add(lblDepartures);
-		
 	
-		lblTimeLeft.setBounds(179, 81, 46, 14);
+		lblTimeLeft.setBounds(179, 106, 46, 14);
 		contentPane.add(lblTimeLeft);
 		
 		
-		Departure1.setBounds(10, 132, 144, 14);
+		Departure1.setBounds(10, 157, 144, 14);
 		contentPane.add(Departure1);
 		
 		
-		Departure2.setBounds(10, 195, 144, 14);
+		Departure2.setBounds(10, 220, 144, 14);
 		contentPane.add(Departure2);
 		
-		TimeLeft1.setBounds(179, 132, 116, 14);
+		TimeLeft1.setBounds(179, 157, 116, 14);
 		contentPane.add(TimeLeft1);
 		
-		TimeLeft2.setBounds(179, 195, 116, 14);
+		TimeLeft2.setBounds(179, 220, 116, 14);
 		contentPane.add(TimeLeft2);
+		
+		JLabel lblStation = new JLabel("Showing departures from: ");
+		lblStation.setBounds(10, 81, 159, 14);
+		contentPane.add(lblStation);
+		
+		
+		GetStation.setBounds(179, 81, 245, 14);
+		contentPane.add(GetStation);
 		
 		btnGetrefresh.addActionListener(this);
 		
@@ -104,6 +108,7 @@ public class visualApi extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		pos = 0;
 		boxt.put(1, TimeLeft1);
 		boxt.put(2, TimeLeft2);
 		boxd.put(1, Departure1);
@@ -120,7 +125,8 @@ public class visualApi extends JFrame implements ActionListener {
 			m++;
 			pos = pos + 3;
 			}	
-		
+	
+		URLParser.initialscan=0;
 		
 		} catch (ParserConfigurationException e1) {
 			// TODO Auto-generated catch block
