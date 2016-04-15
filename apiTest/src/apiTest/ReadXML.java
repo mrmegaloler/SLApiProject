@@ -151,8 +151,8 @@ public class ReadXML {
 		String timeLeft = "x";
 		
 		do {
-			Element transportMode1 = (Element) transportMode.item(n);
-			Element Direction1 = (Element) Direction.item(n);
+			Element transportMode1 = (Element) transportMode.item(n + XMLPosBus);
+			Element Direction1 = (Element) Direction.item(n + XMLPosBus);
 			//System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = "error";
 			if(n<departureNo){
@@ -161,7 +161,7 @@ public class ReadXML {
 			}
 			        
 			if (transportText.equals("BUS")) {
-				timeleft = (Element) DisplayTime.item(n + XMLPos);
+				timeleft = (Element) DisplayTime.item(n + XMLPosBus);
 				timeLeft = timeleft.getFirstChild().getNodeValue();
 				
 				isMetro = true;
@@ -169,7 +169,7 @@ public class ReadXML {
 				n++;
 				isMetro = false;
 			} else if (n>departureNo){
-				timeLeft = ("No metro departures from here.");
+				timeLeft = ("No bus departures from here.");
 				isMetro = true;
 			}
 		} while (isMetro == false);
@@ -200,8 +200,8 @@ public class ReadXML {
 		
 		do {
 			//creates an element from the nth item in the transportmode nodelist
-			Element transportMode1 = (Element) transportMode.item(n);
-			Element Direction1 = (Element) Direction.item(n);
+			Element transportMode1 = (Element) transportMode.item(n + XMLPosBus);
+			Element Direction1 = (Element) Direction.item(n + XMLPosBus);
 			//System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = "Error";
 			String text = new String("BUS");
@@ -213,7 +213,7 @@ public class ReadXML {
 			}
 			
 			if (transportText.equals(text)) {
-				destination1 = (Element) Destination.item(n + XMLPos);
+				destination1 = (Element) Destination.item(n + XMLPosBus);
 				timeLeft = destination1.getFirstChild().getNodeValue();
 				isMetro = true;
 			} else if (transportText != text && n<=departureNo) {
