@@ -155,7 +155,8 @@ public class ReadXML {
 			Element Direction1 = (Element) Direction.item(n + XMLPosBus);
 			//System.out.println(transportMode1.getFirstChild().getNodeValue());
 			String transportText = "error";
-			if(n<departureNo){
+			
+			if((n+XMLPosBus)<departureNo){
 			transportText = new String(transportMode1.getFirstChild().getNodeValue());
 			directionText = new String(Direction1.getFirstChild().getNodeValue());
 			}
@@ -206,7 +207,7 @@ public class ReadXML {
 			String transportText = "Error";
 			String text = new String("BUS");
 			
-			if(n<departureNo){
+			if((n+XMLPosBus)<departureNo){
 				transportText = new String(transportMode1.getFirstChild().getNodeValue());
 				directionText = new String(Direction1.getFirstChild().getNodeValue());
 				
