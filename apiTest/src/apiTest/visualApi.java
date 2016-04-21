@@ -157,10 +157,9 @@ public class visualApi extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-<<<<<<< HEAD
+
 		ReadXML.XMLPosBus = 0;
-=======
->>>>>>> refs/remotes/origin/master
+
 		ReadXML.journeydM = "2";
 		ReadXML.journeydB = "2";
 		
