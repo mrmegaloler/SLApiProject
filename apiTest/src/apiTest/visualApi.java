@@ -23,14 +23,26 @@ import javax.swing.JTabbedPane;
 public class visualApi extends JFrame implements ActionListener {
 	JButton btnGetrefresh = new JButton("Get departures");
 	JLabel lblTimeLeft = new JLabel("");
-	static JLabel Departure1 = new JLabel("");
-	JLabel Departure2 = new JLabel("");
-	JLabel TimeLeft1 = new JLabel("");
-	JLabel TimeLeft2 = new JLabel("");
+	static JLabel Departure1M = new JLabel("");
+	JLabel Departure2M = new JLabel("");
+	JLabel TimeLeft1M = new JLabel("");
+	JLabel TimeLeft2M = new JLabel("");
+	
+	JLabel Departure1B = new JLabel("");
+	JLabel Departure2B = new JLabel("");
+	JLabel TimeLeft1B = new JLabel("");
+	JLabel TimeLeft2B = new JLabel("");
+	
 	public static JLabel GetStation = new JLabel("");
 	HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
 	
 	HashMap <Integer, JLabel> boxd= new HashMap <Integer, JLabel>();
+	
+	HashMap <Integer, JLabel> boxb= new HashMap <Integer, JLabel>();
+	
+	HashMap <Integer, JLabel> boxbt= new HashMap <Integer, JLabel>();
+	
+	
 
 	
 	private JPanel contentPane;
@@ -65,19 +77,35 @@ public class visualApi extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 89, 525, 231);
+		tabbedPane.setBounds(0, 89, 535, 231);
 		contentPane.add(tabbedPane);
 		
 		JPanel MetroPanel = new JPanel();
 		tabbedPane.addTab("Metro", null, MetroPanel, null);
 		MetroPanel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
-		panel_1.setLayout(null);
+		JPanel BusPanel = new JPanel();
+		tabbedPane.addTab("Bus  ", null, BusPanel, null);
+		BusPanel.setLayout(null);
+		
+		
+		Departure1B.setBounds(10, 58, 144, 14);
+		BusPanel.add(Departure1B);
+		
+		
+		Departure2B.setBounds(10, 121, 144, 14);
+		BusPanel.add(Departure2B);
+		
+		
+		TimeLeft1B.setBounds(179, 58, 341, 14);
+		BusPanel.add(TimeLeft1B);
+		
+		
+		TimeLeft2B.setBounds(179, 121, 341, 14);
+		BusPanel.add(TimeLeft2B);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_2, null);
+		tabbedPane.addTab("Train", null, panel_2, null);
 		panel_2.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
@@ -99,18 +127,18 @@ public class visualApi extends JFrame implements ActionListener {
 		contentPane.add(lblTimeLeft);
 		
 		
-		Departure1.setBounds(10, 11, 144, 14);
-		MetroPanel.add(Departure1);
+		Departure1M.setBounds(10, 58, 144, 14);
+		MetroPanel.add(Departure1M);
 		
 		
-		Departure2.setBounds(10, 74, 144, 14);
-		MetroPanel.add(Departure2);
+		Departure2M.setBounds(10, 121, 144, 14);
+		MetroPanel.add(Departure2M);
 		
-		TimeLeft1.setBounds(179, 11, 245, 14);
-		MetroPanel.add(TimeLeft1);
+		TimeLeft1M.setBounds(179, 58, 341, 14);
+		MetroPanel.add(TimeLeft1M);
 		
-		TimeLeft2.setBounds(179, 74, 245, 14);
-		MetroPanel.add(TimeLeft2);
+		TimeLeft2M.setBounds(179, 121, 341, 14);
+		MetroPanel.add(TimeLeft2M);
 		
 		JLabel lblStation = new JLabel("Showing departures from: ");
 		lblStation.setBounds(10, 64, 159, 14);
@@ -127,13 +155,21 @@ public class visualApi extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {		
+	public void actionPerformed(ActionEvent e) {
 		
+		ReadXML.XMLPosBus = 0;
+		ReadXML.journeydM = "2";
+		ReadXML.journeydB = "2";
 		
-		boxt.put(1, TimeLeft1);
-		boxt.put(2, TimeLeft2);
-		boxd.put(1, Departure1);
-		boxd.put(2, Departure2);
+		boxt.put(1, TimeLeft1M);
+		boxt.put(2, TimeLeft2M);
+		boxd.put(1, Departure1M);
+		boxd.put(2, Departure2M);
+		
+		boxbt.put(1, TimeLeft1B);
+		boxbt.put(2, TimeLeft2B);
+		boxb.put(1, Departure1B);
+		boxb.put(2, Departure2B);
 		
 		String station = txtStation.getText();
 		try {
@@ -146,9 +182,12 @@ public class visualApi extends JFrame implements ActionListener {
 		int m = 1;
 		try {
 			while(n<=2){
+			ReadXML.XMLPos=0;
 			boxt.get(n).setText(ReadXML.timeleft(station));
+			boxbt.get(n).setText(ReadXML.timeleftBus(station));
 			n++;
-			boxd.get(m).setText((ReadXML.departure(station)));
+			boxd.get(m).setText(ReadXML.departure(station));
+			boxb.get(m).setText(ReadXML.departureBus(station));
 			m++;
 			}	
 	
