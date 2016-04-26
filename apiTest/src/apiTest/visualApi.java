@@ -33,6 +33,11 @@ public class visualApi extends JFrame implements ActionListener {
 	JLabel TimeLeft1B = new JLabel("");
 	JLabel TimeLeft2B = new JLabel("");
 	
+	JLabel TimeLeft2MR = new JLabel("");
+	JLabel TimeLeft1MR = new JLabel("");
+	JLabel Departure2MR = new JLabel("");
+	JLabel Departure1MR = new JLabel("");
+	
 	public static JLabel GetStation = new JLabel("");
 	HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
 	
@@ -42,6 +47,9 @@ public class visualApi extends JFrame implements ActionListener {
 	
 	HashMap <Integer, JLabel> boxbt= new HashMap <Integer, JLabel>();
 	
+	HashMap <Integer, JLabel> boxtR= new HashMap <Integer, JLabel>();
+	
+	HashMap <Integer, JLabel> boxdR= new HashMap <Integer, JLabel>();
 	
 
 	
@@ -127,18 +135,42 @@ public class visualApi extends JFrame implements ActionListener {
 		contentPane.add(lblTimeLeft);
 		
 		
-		Departure1M.setBounds(10, 58, 144, 14);
+		Departure1M.setBounds(10, 36, 144, 14);
 		MetroPanel.add(Departure1M);
 		
 		
-		Departure2M.setBounds(10, 121, 144, 14);
+		Departure2M.setBounds(10, 65, 144, 14);
 		MetroPanel.add(Departure2M);
 		
-		TimeLeft1M.setBounds(179, 58, 341, 14);
+		TimeLeft1M.setBounds(179, 36, 341, 14);
 		MetroPanel.add(TimeLeft1M);
 		
-		TimeLeft2M.setBounds(179, 121, 341, 14);
+		TimeLeft2M.setBounds(179, 65, 341, 14);
 		MetroPanel.add(TimeLeft2M);
+		
+		JLabel lblGreenLine = new JLabel("Green Line");
+		lblGreenLine.setBounds(10, 11, 144, 14);
+		MetroPanel.add(lblGreenLine);
+		
+		JLabel lblRedLine = new JLabel("Red Line");
+		lblRedLine.setBounds(10, 101, 73, 14);
+		MetroPanel.add(lblRedLine);
+		
+		
+		Departure1MR.setBounds(10, 126, 144, 14);
+		MetroPanel.add(Departure1MR);
+		
+		
+		Departure2MR.setBounds(10, 151, 144, 14);
+		MetroPanel.add(Departure2MR);
+		
+		
+		TimeLeft1MR.setBounds(179, 126, 341, 14);
+		MetroPanel.add(TimeLeft1MR);
+		
+		
+		TimeLeft2MR.setBounds(179, 151, 341, 14);
+		MetroPanel.add(TimeLeft2MR);
 		
 		JLabel lblStation = new JLabel("Showing departures from: ");
 		lblStation.setBounds(10, 64, 159, 14);
@@ -173,6 +205,11 @@ public class visualApi extends JFrame implements ActionListener {
 		boxb.put(1, Departure1B);
 		boxb.put(2, Departure2B);
 		
+		boxtR.put(1, TimeLeft1MR);
+		boxtR.put(2, TimeLeft2MR);
+		boxdR.put(1, Departure1MR);
+		boxdR.put(2, Departure2MR);
+		
 		String station = txtStation.getText();
 		try {
 			ReadXML.XMLGen(station);
@@ -186,9 +223,14 @@ public class visualApi extends JFrame implements ActionListener {
 			while(n<=2){
 			ReadXML.XMLPos=0;
 			boxt.get(n).setText(ReadXML.timeleft(station));
+			boxd.get(m).setText(ReadXML.departure(station));
+			
+			ReadXML.XMLPos=0;
+			boxtR.get(n).setText(ReadXML.timeleftRed(station));
 			boxbt.get(n).setText(ReadXML.timeleftBus(station));
 			n++;
-			boxd.get(m).setText(ReadXML.departure(station));
+			
+			boxdR.get(m).setText(ReadXML.departureRed(station));
 			boxb.get(m).setText(ReadXML.departureBus(station));
 			m++;
 			}	
