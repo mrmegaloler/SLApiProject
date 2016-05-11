@@ -113,7 +113,10 @@ public class ReadXML {
 				timeLeft = timeleft.getFirstChild().getNodeValue();
 
 				isMetro = true;
-			} else if (!transportText.equals("Metro") && n <= departureNo || !lineText.equals("2") && n <= departureNo) {
+			} else if (!transportText.equals("METRO") && n <= departureNo) {
+				n++;
+				isMetro = false;
+			} else if (!lineText.equals("2") && n <= departureNo ) {
 				n++;
 				isMetro = false;
 			} else if (n > departureNo) {
@@ -223,7 +226,10 @@ public class ReadXML {
 				timeLeft = destination1.getFirstChild().getNodeValue();
 				journeydM = String.valueOf(DirectionJM);
 				isMetro = true;
-			} else if (transportText != text && n <= departureNo || !lineText.equals("2") && n <= departureNo) {
+			} else if (!transportText.equals("METRO") && n <= departureNo) {
+				n++;
+				isMetro = false;
+			} else if (!lineText.equals("2") && n <= departureNo ) {
 				n++;
 				isMetro = false;
 			} else if (n > departureNo) {
