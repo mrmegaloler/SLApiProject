@@ -17,6 +17,7 @@ public class ReadXML {
 	static int XMLPos = 0;
 	static int XMLPosBus = 0;
 	static int DirectionJM = 1;
+	static int DirectionJMB = 2;
 	static String journeydM = "2";
 	static int DirectionJB = 1;
 	static String journeydB = "2";
@@ -122,7 +123,11 @@ public class ReadXML {
 			} else if (n > departureNo) {
 				timeLeft = ("No subway departures from here.");
 				isMetro = true;
+			} else {
+				n++;
+				isMetro = false;
 			}
+			
 		} while (isMetro == false);
 
 		n = 0;
@@ -224,7 +229,7 @@ public class ReadXML {
 			if (transportText.equals(text) && directionText.equals(journeydM) && lineText.equals("2")) {
 				destination1 = (Element) Destination.item(n + XMLPos);
 				timeLeft = destination1.getFirstChild().getNodeValue();
-				journeydM = String.valueOf(DirectionJM);
+				journeydM = "2";
 				isMetro = true;
 			} else if (!transportText.equals("METRO") && n <= departureNo) {
 				n++;
@@ -235,6 +240,9 @@ public class ReadXML {
 			} else if (n > departureNo) {
 				System.out.print("error 1");
 				isMetro = true;
+			} else {
+				n++;
+				isMetro = false;
 			}
 		} while (isMetro == false);
 
