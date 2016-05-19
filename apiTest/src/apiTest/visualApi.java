@@ -225,7 +225,7 @@ public class visualApi extends JFrame implements ActionListener {
 			boxt.get(n).setText(ReadXML.timeleft(station));
 			boxd.get(m).setText(ReadXML.departure(station));
 			
-			ReadXML.XMLPos=0;
+			ReadXML.XMLPosR=0;
 			boxtR.get(n).setText(ReadXML.timeleftRed(station));
 			boxbt.get(n).setText(ReadXML.timeleftBus(station));
 			n++;
