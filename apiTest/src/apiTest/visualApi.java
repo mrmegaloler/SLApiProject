@@ -19,7 +19,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.swing.JTabbedPane;
-
+	//just the standard window setup this program is extremely boring
+	//i just initialize a bunch of variables
 public class visualApi extends JFrame implements ActionListener {
 	JButton btnGetrefresh = new JButton("Get departures");
 	JLabel lblTimeLeft = new JLabel("");
@@ -38,6 +39,7 @@ public class visualApi extends JFrame implements ActionListener {
 	JLabel Departure2MR = new JLabel("");
 	JLabel Departure1MR = new JLabel("");
 	
+	//Create a bunch of hashmaps
 	public static JLabel GetStation = new JLabel("");
 	HashMap <Integer, JLabel> boxt= new HashMap <Integer, JLabel>();
 	
@@ -76,14 +78,16 @@ public class visualApi extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
+	//create a tabbed pane
 	public visualApi() {
+		//i did most of this with a graphical user interface just so you know
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 551, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//Create the different tabs
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 89, 535, 231);
 		contentPane.add(tabbedPane);
@@ -189,7 +193,7 @@ public class visualApi extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-
+		//use hashmaps to adjust variable names as we go along
 		ReadXML.XMLPosBus = 0;
 
 		ReadXML.journeydM = "2";
@@ -220,6 +224,7 @@ public class visualApi extends JFrame implements ActionListener {
 		int n = 1;
 		int m = 1;
 		try {
+			//fetches the data for what ends up in the boxes, and puts it in different jlables each loop thanks to hashmaps
 			while(n<=2){
 			ReadXML.XMLPos=0;
 			boxt.get(n).setText(ReadXML.timeleft(station));

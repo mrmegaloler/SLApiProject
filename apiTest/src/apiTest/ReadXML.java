@@ -82,7 +82,7 @@ public class ReadXML {
 		n = 0;
 		return timeLeft;
 	}
-
+	//this is the exact same thing as the previous one except linetexxt equals 2, refer to timeleft
 	public static String timeleftRed(String direction) throws ParserConfigurationException, SAXException, IOException {
 		int n = 0;
 		boolean isMetro = false;
@@ -164,11 +164,12 @@ public class ReadXML {
 				isMetro = true;
 			}
 		} while (isMetro == false);
+		//this xmlpos is crucial because it makes the next go around go for at least the entry after this one. 
 		XMLPos = n + 1;
 		n = 0;
 		return timeLeft;
 	}
-
+	//same as before, they are all pretty identical
 	public static String departureRed(String direction) throws SAXException, IOException, ParserConfigurationException {
 		int n = 0;
 		boolean isMetro = false;
@@ -217,7 +218,7 @@ public class ReadXML {
 		n = 0;
 		return timeLeft;
 	}
-
+	//refer to departureBus for documentation
 	public static String timeleftBus(String direction) throws ParserConfigurationException, SAXException, IOException {
 		int n = 0;
 		boolean isMetro = false;
@@ -252,7 +253,8 @@ public class ReadXML {
 		n = 0;
 		return timeLeft;
 	}
-
+	//this one is a bit different, it just loops until it finds the first bus entry
+	//the amount of results with this can be adjusted with the amount of times you run the program in VisualApi
 	public static String departureBus(String direction) throws SAXException, IOException, ParserConfigurationException {
 		int n = 0;
 		boolean isMetro = false;
