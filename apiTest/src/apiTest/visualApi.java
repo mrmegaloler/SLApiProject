@@ -21,6 +21,13 @@ import java.util.HashMap;
 import javax.swing.JTabbedPane;
 	//just the standard window setup this program is extremely boring
 	//i just initialize a bunch of variables
+
+	//developers note
+	//its been hard developing this program and finding bugs because the xml file being used changes every minute
+	//green line functionality and buses work to 100%
+	//red line functionality works fairly well
+	//if program freezes when pressing get departures i dont know why it does that but youll have to terminate the program and go again.
+	//it is however normal for it to hang for up to 5-10 seconds depending on internet speed
 public class visualApi extends JFrame implements ActionListener {
 	JButton btnGetrefresh = new JButton("Get departures");
 	JLabel lblTimeLeft = new JLabel("");
